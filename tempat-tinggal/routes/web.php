@@ -21,6 +21,16 @@ Route::get('/app', function () {
     return view('layouts.app');
 });
 
+Route::get('/masuk', function () {
+    return view('layouts.auth.login');
+});
+Route::get('/forgot-pass', function () {
+    return view('layouts.auth.forgot-pass');
+});
+Route::get('/registration', function () {
+    return view('layouts.auth.registration');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -40,6 +40,10 @@
         margin: 0;
         padding: 0;
     }
+    #app{
+        width: 100%;
+        height: 100%;
+    }
     .nav{
         height: 130.5px;
         border-bottom: 2px solid #789395;
@@ -48,5 +52,10 @@
     .container{
         height: 300px;
         width: 100%;
+    }
+    @media screen and (max-width:403px){
+      .navbar{
+        width: 403px;
+      }
     }
 </style>
