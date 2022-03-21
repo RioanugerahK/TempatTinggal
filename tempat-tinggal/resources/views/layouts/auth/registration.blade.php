@@ -12,36 +12,74 @@
              <h2>Daftar</h2>
              <div class="underlined-title"></div>
         </div>
-        <form action="" class="form">
+        <form action="/registUser" class="form" method="POST">
+            @csrf
             {{-- Nama --}}
-            <label for="nama" style="padding-top:57px">&nbsp;
-                Nama Lengkap
-             </label>
-             <input type="text" id="user-nama" class="form-content" name="nama" autocomplete="on" required/>
-             <div class="form-border"></div>
+            <div class="form-group">
+                <label for="nama" style="padding-top:57px">&nbsp;
+                    Nama Lengkap
+                 </label>
+                 <input type="text" id="user-nama" class="form-content @error('name') is-invalid @enderror" name="name" autocomplete="on" required/>
+                 @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                 @enderror
+                 <div class="form-border"></div>
+            </div>
              {{-- No HP --}}
-            <label for="user-noHp" style="padding-top:27px">&nbsp;
-               Nomor Handphone 
-            </label>
-            <input type="text" id="user-noHp" class="form-content" name="noHp" autocomplete="on" required/>
-            <div class="form-border"></div>
+             <div class="form-group">
+                 <label for="user-noHp" style="padding-top:27px">&nbsp;
+                    Nomor Handphone 
+                 </label>
+                 <input type="text" id="user-noHp" class="form-content @error('no_hp') is-invalid @enderror" name="no_hp" autocomplete="on" required/>
+                 @error('no_hp')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                 <div class="form-border"></div>
+             </div>
                 {{-- Email --}}
-            <label for="nama" style="padding-top:27px">&nbsp;
-                Email
-            </label>
-            <input type="email" id="user-email" class="form-content" name="email" autocomplete="on" required/>
-            <div class="form-border"></div>
-            <label for="user-password" style="padding-top:27px">&nbsp;
-                password
-            </label>
-            <input type="password" id="user-password" class="form-content" name="password" required/>
-            <div class="form-border"></div>
-            <label for="user-password" style="padding-top:27px">&nbsp;
-                Ulangi password
-            </label>
-            <input type="password" id="user-password" class="form-content" name="password" required/>
-            <input type="submit" id="submit-btn" name="submit"  value="Login">
-            <a href="#" id="signup">Belum punya Akun?</a>
+                <label for="nama" style="padding-top:27px">&nbsp;
+                    Email
+                </label>
+                <input type="email" id="user-email" class="form-content @error('email') is-invalid @enderror" name="email" autocomplete="on" required/>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <div class="form-border"></div>
+                {{-- Password --}}
+            <div class="form-group">
+                <label for="user-password" style="padding-top:27px">&nbsp;
+                    {{ __('Password') }}
+                </label>
+                <input type="password" id="user-password" class="form-content @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"/>
+
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+
+                <div class="form-border"></div>
+            </div>
+            {{-- Password Confirmation --}}
+            <div class="form-group">
+                <label for="password-confirm" style="padding-top:27px">&nbsp;
+                    {{ __('Confirm Password') }}
+                </label>
+                <input type="password" id="password-confirm" class="form-content" name="password_confirmation" required autocomplete="new-password"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit-btn" name="submit" value="Sign Up">
+                {{ __('Register') }}
+            </button>
+{{-- 
+            <input type="submit" id="submit-btn" name="submit"  value="Sign Up">
+            <a href="#" id="signup">Belum punya Akun?</a> --}}
         </form>
     </div>
 </div>

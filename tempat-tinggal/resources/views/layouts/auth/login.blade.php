@@ -13,16 +13,26 @@
              <div class="underlined-title"></div>
         </div>
         <form action="" class="form">
-            <label for="user-noHp" style="padding-top:57px">&nbsp;
-               Nomor Handphone 
-            </label>
-            <input type="text" id="user-noHp" class="form-content" name="noHp" autocomplete="on" required/>
+            @csrf
+            @if (session()->has('message'))
+                    <div class="alert alert-success" role="success">
+                        {{ session('message') }}
+                    </div>
+            @endif
+            
+            <div class="form-group">
+                <label for="user-noHp" style="padding-top:57px">&nbsp;
+                   Nomor Handphone 
+                </label>
+                <input type="text" id="user-noHp" class="form-content" name="noHp" autocomplete="on" required/>
+            </div>
             <div class="form-border"></div>
-
-            <label for="user-password" style="padding-top:27px">&nbsp;
-                password
-            </label>
-            <input type="password" id="user-password" class="form-content" name="password" required/>
+            <div class="form-group">
+                <label for="user-password" style="padding-top:27px">&nbsp;
+                    Password
+                </label>
+                <input type="password" id="user-password" class="form-content" name="password" required/>
+            </div>
             <div class="form-border"></div>
             <a href="#">
                 <legend id="forgot-pass">Lupa Password</legend>
